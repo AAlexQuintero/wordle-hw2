@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordle</title>
+    <title>Wordle · Five letters, six chances</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <link
@@ -13,13 +13,24 @@
   />
 </head>
 <body>
-    <h1> Wordle Clone </h1>
+    <main class="game-shell">
+    <header>
+        <p class="eyebrow">THE FIVE-LETTER CHALLENGE</p>
+        <h1>Wordle<span>.</span></h1>
+        <p class="subtitle">One word. Six chances. Make every letter count.</p>
+    </header>
+
+    <section class="controls" aria-label="Game controls">
+        <button id="hint-button" type="button">Hint <span id="hint-count">1 left</span></button>
+        <button id="new-game-button" type="button">New Game <span aria-hidden="true">↻</span></button>
+    </section>
+    <p id="game-status" role="status" aria-live="polite">Guess a five-letter word to get started.</p>
     
-    <div id="game-board">
+    <div id="game-board" role="group" aria-label="Wordle board: six guesses of five letters">
 
     </div>
 
-    <div id="keyboard-cont">
+    <div id="keyboard-cont" role="group" aria-label="On-screen keyboard">
         <div class="first-row">
             <button class="keyboard-button">q</button>
             <button class="keyboard-button">w</button>
@@ -56,6 +67,20 @@
         </div>
     </div>
 
+    <p class="legend"><span><i class="green"></i>Right spot</span><span><i class="yellow"></i>Wrong spot</span><span><i class="gray"></i>Not in word</span></p>
+    <section class="statistics" aria-labelledby="statistics-title">
+        <div class="section-heading"><h2 id="statistics-title">Your statistics</h2><span>Saved on this browser</span></div>
+        <dl class="stats-grid">
+            <div><dd id="games-played">0</dd><dt>Games played</dt></div>
+            <div><dd id="wins">0</dd><dt>Wins</dt></div>
+            <div><dd id="losses">0</dd><dt>Losses</dt></div>
+            <div><dd id="win-rate">0%</dd><dt>Win rate</dt></div>
+            <div><dd id="current-streak">0</dd><dt>Current streak</dt></div>
+            <div><dd id="best-streak">0</dd><dt>Best streak</dt></div>
+        </dl>
+    </section>
+    <footer>Type on your keyboard or tap the letters above.</footer>
+    </main>
 <script
 src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
